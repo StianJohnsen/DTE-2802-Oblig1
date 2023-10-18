@@ -1,5 +1,7 @@
 ﻿using LabOppgave1.Data;
 using LabOppgave1.Models.Entities;
+using LabOppgave1.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace LabOppgave1.Models
 {
@@ -15,12 +17,30 @@ namespace LabOppgave1.Models
 
         public IEnumerable<Product> GetAll()
         {
-            return db.Product;
+            var products = db.Product
+                .Include(cat => cat.Category)
+                .Include(man => man.Manufacturer)
+                .ToList();
+        return products;
+        }
+
+        public ProductEditViewModel GetProductEditViewModel()
+        {
+
+            var viewModel = new ProductEditViewModel
+            {
+                Categories = db.Category.ToList(),
+                Manufacturers = db.Manufacturer.ToList()
+
+            };
+            return viewModel;
+                
         }
 
         public void Save(Product product)
         {
-            throw new NotImplementedException();
+            db.Product.Add(product);
+            db.SaveChanges();
         }
     }
 }

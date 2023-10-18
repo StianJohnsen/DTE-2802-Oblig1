@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LabOppgave1.Models.Entities;
 using LabOppgave1.Models;
+using LabOppgave1.Models.ViewModels;
 
 namespace LabOppgave1.Controllers
 {
@@ -17,20 +18,38 @@ namespace LabOppgave1.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
-            return View();
+            var product = repository.GetProductEditViewModel();
+            return View(product);
         }
 
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create([Bind("Name,Description,Price,ManufacturerId,CategoryId")] ProductEditViewModel productEditViewModel)
         {
             try
             {
                 // Kall til metoden save i repository
-               this.repository.Save(product);
-                return RedirectToAction("Index");
+                var product = new Product
+                {
+                    ProductId = productEditViewModel.ProductId,
+                    Name = productEditViewModel.Name,
+                    Description = productEditViewModel.Description,
+                    Price = productEditViewModel.Price,
+                    ManufacturerId = productEditViewModel.ManufacturerId,
+                    CategoryId = productEditViewModel.CategoryId,
 
+                };
+                if (ModelState.IsValid)
+                {
+                    TempData["message"] = string.Format("{0} has been saved", product.Name);
+                    repository.Save(product);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

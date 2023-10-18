@@ -3,6 +3,7 @@ using System;
 using LabOppgave1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabOppgave1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231017162712_second config")]
+    partial class secondconfig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,7 +141,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            Description = "iPhone 12 er en smarttelefon utviklet av Apple",
                             ManufacturerId = 1,
                             Name = "iPhone 12",
                             Price = 9999.99m
@@ -147,7 +149,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            Description = "iPhone 12 Pro er en smarttelefon utviklet av Apple",
                             ManufacturerId = 1,
                             Name = "iPhone 12 Pro",
                             Price = 12999.99m
@@ -156,7 +157,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 3,
                             CategoryId = 1,
-                            Description = "iPhone 12 Pro Max er en smarttelefon utviklet av Apple",
                             ManufacturerId = 1,
                             Name = "iPhone 12 Pro Max",
                             Price = 14999.99m
@@ -165,9 +165,9 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 4,
                             CategoryId = 1,
-                            Description = "iPhone 12 Mini er en smarttelefon utviklet av Apple",
                             ManufacturerId = 1,
-                            Name = "iPhone 12 Mini"
+                            Name = "iPhone 12 Mini",
+                            Price = 8999.99m
                         },
                         new
                         {
@@ -181,7 +181,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 6,
                             CategoryId = 2,
-                            Description = "BMW 1-serie er en bil utviklet av BMW",
                             ManufacturerId = 2,
                             Name = "BMW 1-serie",
                             Price = 300000m
@@ -190,9 +189,9 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 7,
                             CategoryId = 2,
-                            Description = "BMW 2-serie er en bil utviklet av BMW",
                             ManufacturerId = 2,
-                            Name = "BMW 2-serie"
+                            Name = "BMW 2-serie",
+                            Price = 400000m
                         },
                         new
                         {
@@ -206,15 +205,14 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 9,
                             CategoryId = 2,
-                            Description = "BMW 4-serie er en bil utviklet av BMW",
                             ManufacturerId = 2,
-                            Name = "BMW 4-serie"
+                            Name = "BMW 4-serie",
+                            Price = 600000m
                         },
                         new
                         {
                             ProductId = 10,
                             CategoryId = 2,
-                            Description = "BMW 5-serie er en bil utviklet av BMW",
                             ManufacturerId = 2,
                             Name = "BMW 5-serie",
                             Price = 700000m
@@ -223,15 +221,14 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 11,
                             CategoryId = 3,
-                            Description = "Siemens EQ.9 plus connect er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
-                            Name = "Siemens EQ.9 plus connect"
+                            Name = "Siemens EQ.9 plus connect",
+                            Price = 20000m
                         },
                         new
                         {
                             ProductId = 12,
                             CategoryId = 3,
-                            Description = "Siemens EQ.6 plus s700 er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
                             Name = "Siemens EQ.6 plus s700",
                             Price = 15000m
@@ -240,9 +237,9 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 13,
                             CategoryId = 3,
-                            Description = "Siemens EQ.500 integral er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
-                            Name = "Siemens EQ.500 integral"
+                            Name = "Siemens EQ.500 integral",
+                            Price = 10000m
                         },
                         new
                         {
@@ -256,7 +253,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 15,
                             CategoryId = 3,
-                            Description = "Siemens EQ.200 er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
                             Name = "Siemens EQ.200",
                             Price = 3000m

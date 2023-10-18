@@ -1,9 +1,6 @@
-﻿@using LabOppgave1.Models.Entities
-@model Product
+﻿@using LabOppgave1.Models.ViewModels
+@model ProductEditViewModel
 
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
@@ -17,25 +14,41 @@
             <div class="col-md-4">
                 <form asp-action="Create" method="post">
                     <div>
-                        <label asp-for="Name">Product name:</label>
-                        <input asp-for="Name" />
+                        <label asp-for="Name">Name:</label>
+                        <input asp-for="Name" class="form-control"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div>
-                        <label asp-for="Description">Description:</label>
-                        <input asp-for="Description" />
+                        <label asp-for="Description">Description</label>
+                        <input asp-for="Description" class="form-control"/>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
                     </div>
                     <div>
-                        <label asp-for="Price">Price:</label>
-                        <input asp-for="Price" />
+                        <label asp-for="Price">Price</label>
+                        <input asp-for="Price" class="form-control"/>
+                        <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
-                    <div>
-                        <label for="Category">Category:</label>
-                        <input type="text" id="Category" name="Category" value="" />
-                    </div>
+                <div>
+                    <select asp-for="ManufacturerId"
+                            asp-items="@(new SelectList(Model.Manufacturers,"ManufacturerId","Name"))">
+                    </select>
+                </div>
+
+                <div>
+                    <select asp-for="CategoryId"
+                            asp-items="@(new SelectList(Model.Categories,"CategoryId","Name"))">
+                    </select>
+                </div>
+
                     <button type="submit">Create product</button>
                 </form>
             </div>
-        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+        </div>
     </body>
+
 </html>
+@section Scripts
+    {@{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}}

@@ -1,4 +1,5 @@
 ﻿using LabOppgave1.Models.Entities;
+using LabOppgave1.Models.ViewModels;
 
 namespace LabOppgave1.Models
 {
@@ -6,5 +7,6 @@ namespace LabOppgave1.Models
     {
         IEnumerable<Product> GetAll();
         void Save(Product product);
+        ProductEditViewModel GetProductEditViewModel();
     }
 }

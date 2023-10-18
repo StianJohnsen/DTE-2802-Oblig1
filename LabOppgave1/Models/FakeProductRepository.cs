@@ -1,4 +1,5 @@
 ﻿using LabOppgave1.Models.Entities;
+using LabOppgave1.Models.ViewModels;
 
 namespace LabOppgave1.Models
 {
@@ -8,13 +9,18 @@ namespace LabOppgave1.Models
         {
             List<Product> products = new List<Product>
             {
-                new Product {Name="Hammer", Price=121.50m, Category="Verktøy"},
-                new Product {Name="Vinkelsliper", Price=1520.00m, Category ="Verktøy"},
-                new Product {Name="Melk", Price=14.50m, Category ="Dagligvarer"},
-                new Product {Name="Kjøttkaker", Price=32.00m, Category ="Dagligvarer"},
-                new Product {Name="Brød", Price=25.50m, Category ="Dagligvarer"}
+                new Product { ProductId = 6, Name = "BMW 1-serie", Price = 300000m, CategoryId = 2, ManufacturerId = 2 },
+                new Product { ProductId = 7, Name = "BMW 2-serie", Price = 400000m, CategoryId = 2, ManufacturerId = 2 },
+                new Product { ProductId = 8, Name = "BMW 3-serie", Price = 500000m, CategoryId = 2, ManufacturerId = 2 },
+                new Product { ProductId = 9, Name = "BMW 4-serie", Price = 600000m, CategoryId = 2, ManufacturerId = 2 },
+                new Product { ProductId = 10, Name = "BMW 5-serie", Price = 700000m, CategoryId = 2, ManufacturerId = 2 },
             };
             return products;
+        }
+
+        public ProductEditViewModel GetProductEditViewModel()
+        {
+            throw new NotImplementedException();
         }
 
         public void Save(Product product)

@@ -3,6 +3,7 @@ using System;
 using LabOppgave1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabOppgave1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231017171323_third config")]
+    partial class thirdconfig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,7 +217,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 10,
                             CategoryId = 2,
-                            Description = "BMW 5-serie er en bil utviklet av BMW",
                             ManufacturerId = 2,
                             Name = "BMW 5-serie",
                             Price = 700000m
@@ -223,15 +225,14 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 11,
                             CategoryId = 3,
-                            Description = "Siemens EQ.9 plus connect er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
-                            Name = "Siemens EQ.9 plus connect"
+                            Name = "Siemens EQ.9 plus connect",
+                            Price = 20000m
                         },
                         new
                         {
                             ProductId = 12,
                             CategoryId = 3,
-                            Description = "Siemens EQ.6 plus s700 er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
                             Name = "Siemens EQ.6 plus s700",
                             Price = 15000m
@@ -240,9 +241,9 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 13,
                             CategoryId = 3,
-                            Description = "Siemens EQ.500 integral er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
-                            Name = "Siemens EQ.500 integral"
+                            Name = "Siemens EQ.500 integral",
+                            Price = 10000m
                         },
                         new
                         {
@@ -256,7 +257,6 @@ namespace LabOppgave1.Migrations
                         {
                             ProductId = 15,
                             CategoryId = 3,
-                            Description = "Siemens EQ.200 er en kaffemaskin utviklet av Siemens",
                             ManufacturerId = 3,
                             Name = "Siemens EQ.200",
                             Price = 3000m

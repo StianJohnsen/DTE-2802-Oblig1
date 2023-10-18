@@ -1,19 +1,26 @@
 using LabOppgave1.Data;
 using LabOppgave1.Models;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddMvc();
+
+builder.Services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
 
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
+
 
 string dbConnectionString = 
     builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     opt.UseMySql(dbConnectionString,
     ServerVersion.AutoDetect(dbConnectionString)));
+
+
 
 var app = builder.Build();
 
