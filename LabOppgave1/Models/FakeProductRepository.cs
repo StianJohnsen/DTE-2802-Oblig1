@@ -22,8 +22,29 @@ namespace LabOppgave1.Models
         {
             throw new NotImplementedException();
         }
+        
+        public ProductEditViewModel GetProductEditViewModelById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProductById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public void Save(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Product product)
         {
             throw new NotImplementedException();
         }

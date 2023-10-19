@@ -1,0 +1,39 @@
+﻿@using LabOppgave1.Models.ViewModels
+@model ProductEditViewModel
+
+
+                        <div>
+                            <label asp-for="Name">Name:</label>
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="Description">Description</label>
+                            <input asp-for="Description" class="form-control"/>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+        
+                        </div>
+                        <div>
+                            <label asp-for="Price">Price</label>
+                            <input asp-for="Price" class="form-control"/>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <select asp-for="ManufacturerId"
+                                    asp-items="@(new SelectList(Model.Manufacturers, "ManufacturerId", "Name"))">
+                            </select>
+                        </div>
+        
+<div>
+    <select asp-for="CategoryId"
+            asp-items="@(new SelectList(Model.Categories, "CategoryId", "Name"))">
+    </select>
+</div>
+
+        
+            @*             <button type="submit">Submit</button> *@
+            @*     </div> *@
+            @*     <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+            @* *@
+            @* </div> *@
+

@@ -7,6 +7,10 @@ namespace LabOppgave1.Models
     {
         IEnumerable<Product> GetAll();
         void Save(Product product);
+        void Edit(Product product);
+        void Delete(Product product);
         ProductEditViewModel GetProductEditViewModel();
+        ProductEditViewModel GetProductEditViewModelById(int id);
+         Product GetProductById(int id);
     }
 }

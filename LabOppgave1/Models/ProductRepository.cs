@@ -37,10 +37,46 @@ namespace LabOppgave1.Models
                 
         }
 
+        public ProductEditViewModel GetProductEditViewModelById(int id)
+        {
+            var product = db.Product.Find(id);
+            var viewModel = new ProductEditViewModel
+            {
+                ProductId = product.ProductId,
+                CategoryId = product.CategoryId,
+                ManufacturerId = product.ManufacturerId,
+                Description = product.Description,
+                Name = product.Name,
+                Price = product.Price,
+                Categories = db.Category.ToList(),
+                Manufacturers = db.Manufacturer.ToList()
+            };
+            return viewModel;
+        }
+        
+        public Product GetProductById(int id)
+        {
+            var product = db.Product.Find(id);
+            return product;
+        }
+        
         public void Save(Product product)
         {
             db.Product.Add(product);
             db.SaveChanges();
         }
+
+         public void Edit(Product product)
+         {
+             db.Product.Update(product);
+             db.SaveChanges();
+         }
+         
+         public void Delete(Product product)
+         {
+             db.Product.Remove(product);
+             db.SaveChanges();
+         }
+        
     }
 }

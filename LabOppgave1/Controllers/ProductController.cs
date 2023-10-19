@@ -21,11 +21,13 @@ namespace LabOppgave1.Controllers
             var product = repository.GetProductEditViewModel();
             return View(product);
         }
-
+        
+        
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create([Bind("Name,Description,Price,ManufacturerId,CategoryId")] ProductEditViewModel productEditViewModel)
+        public ActionResult Create(
+            [Bind("Name,Description,Price,ManufacturerId,CategoryId")] ProductEditViewModel productEditViewModel)
         {
             try
             {
@@ -56,20 +58,65 @@ namespace LabOppgave1.Controllers
                 return View();
             }
         }
+
         public ActionResult Index()
         {
-
-
-
             var products = this.repository.GetAll();
-            
-           
-
-
-
-
-                
             return View(products);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var product = repository.GetProductEditViewModelById(id);
+            Console.WriteLine(id);
+            return View(product);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var product = repository.GetProductEditViewModelById(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id,
+            [Bind("Name,Description,Price,ManufacturerId,CategoryId")] ProductEditViewModel productEditViewModel)
+        {
+            try
+            {
+                // Kall til metoden save i repository
+                var product = new Product
+                {
+                    ProductId = id,
+                    Name = productEditViewModel.Name,
+                    Description = productEditViewModel.Description,
+                    Price = productEditViewModel.Price,
+                    ManufacturerId = productEditViewModel.ManufacturerId,
+                    CategoryId = productEditViewModel.CategoryId,
+
+                };
+                if (ModelState.IsValid)
+                {
+                    TempData["message"] = string.Format("{0} has been saved", product.Name);
+                    repository.Edit(product);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var product = repository.GetProductById(id);
+            repository.Delete(product);
+            return RedirectToAction("Index");
         }
     }
 }
